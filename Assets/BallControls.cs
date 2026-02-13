@@ -5,18 +5,11 @@ public class BallControl : MonoBehaviour
 
     private Rigidbody2D rb2d;
 
-    void GoBall(){
-        var pos = transform.position;
-        pos.y = 0.0f;
-        pos.y = 0.0f;
-        transform.position = pos;
-    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        Invoke("GoBall", 2);
     }
 
     void OnCollisionEnter2D(Collision2D coll){
@@ -35,7 +28,6 @@ public class BallControl : MonoBehaviour
 
     void RestartGame(){
         ResetBall();
-        Invoke("GoBall", 2);
     }
 
     // Update is called once per frame

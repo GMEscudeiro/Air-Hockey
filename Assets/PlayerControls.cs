@@ -29,18 +29,18 @@ public class PlayerControls : MonoBehaviour
 
         rb2d.linearVelocity = vel;                    // Atualizada a velocidade da raquete
 
-        // if (pos.y > upperBound) {                  
-        //     pos.y = upperBound;                     // Corrige a posicao da raquete caso ele ultrapasse o limite superior
-        // }
-        // else if (pos.y < -lowerBound) {
-        //     pos.y = -lowerBound;                    // Corrige a posicao da raquete caso ele ultrapasse o limite inferior
-        // }
-        // if (pos.x > boundX){
-        //     pos.x = boundX;
-        // }
-        // else if (pos.x < -boundX){
-        //     pos.x = -boundX;
-        // }
-        // transform.position = pos;               // Atualiza a posição da raquete
+        if (pos.y + 0.5f > upperBound) {                  
+            pos.y = upperBound - 0.5f;
+        }
+        else if (pos.y - 0.55f < -3.0f) {
+            pos.y = -3.0f;
+        }
+        if (pos.x > 1.5f){
+            pos.x = 1.5f;
+        }
+        else if (pos.x < -1.5f){
+            pos.x = -1.5f;
+        }
+        transform.position = pos;               // Atualiza a posição da raquete
     }
 }
