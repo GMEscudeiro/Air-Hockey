@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static int PlayerScore2 = 0;
 
     public GUISkin layout;
+    private GUIStyle labelStyle;
     GameObject theBall;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,8 +26,11 @@ public class GameManager : MonoBehaviour
 
     void OnGUI(){
         GUI.skin = layout;
-        GUI.Label(new Rect(Screen.width / 2 - 150 - 12, 20, 100, 100), "" + PlayerScore1);
-        GUI.Label(new Rect(Screen.width / 2 + 150 + 12, 20, 100, 100), "" + PlayerScore2);
+        labelStyle = new GUIStyle();
+        labelStyle.normal.textColor = Color.black;
+        labelStyle.fontSize = 120;
+        GUI.Label(new Rect(Screen.width - 200, 500, 200, 200), "" + PlayerScore2, labelStyle);
+        GUI.Label(new Rect(Screen.width - 200, 950, 100, 200), "" + PlayerScore1, labelStyle);
 
         if(GUI.Button(new Rect(Screen.width / 2 - 60, 35, 120, 53), "RESTART")){
             PlayerScore1 = 0;
