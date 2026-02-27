@@ -5,6 +5,7 @@ public class BallControl : MonoBehaviour
 {
 
     private Rigidbody2D rb2d;
+    public AudioSource source;
     private float ballCornerCount = 0;
     private float ballCornerLimit = 1000;
     private Vector2[] corners = new Vector2[] {
@@ -18,9 +19,11 @@ public class BallControl : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        source = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter2D(Collision2D coll){
+        source.Play();
         if(coll.collider.CompareTag("Player")){
             Vector2 vel;
             vel.x = (rb2d.linearVelocity.x / 2) + (coll.collider.attachedRigidbody.linearVelocity.x / 3);
@@ -29,8 +32,8 @@ public class BallControl : MonoBehaviour
         }
         if(coll.collider.CompareTag("Wall")){
             Vector2 vel;
-            vel.x = (rb2d.linearVelocity.x / 8) + (coll.collider.attachedRigidbody.linearVelocity.x / 5);
-            vel.y = (rb2d.linearVelocity.y / 8) + (coll.collider.attachedRigidbody.linearVelocity.y / 5);
+            vel.x = (rb2d.linearVelocity.x / 1.3f);
+            vel.y = (rb2d.linearVelocity.y / 1.3f);
             rb2d.linearVelocity = vel;
         }
     }

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public GUISkin layout;
     private GUIStyle labelStyle;
+    private GUIStyle winnerStyle;
     GameObject theBall;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,6 +30,10 @@ public class GameManager : MonoBehaviour
         labelStyle = new GUIStyle();
         labelStyle.normal.textColor = Color.black;
         labelStyle.fontSize = 120;
+
+        winnerStyle = new GUIStyle();
+        winnerStyle.normal.textColor = Color.black;
+        winnerStyle.fontSize = 90;
         GUI.Label(new Rect(Screen.width - 200, 500, 200, 200), "" + PlayerScore2, labelStyle);
         GUI.Label(new Rect(Screen.width - 200, 950, 100, 200), "" + PlayerScore1, labelStyle);
 
@@ -38,10 +43,10 @@ public class GameManager : MonoBehaviour
             theBall.SendMessage("RestartGame", null, SendMessageOptions.RequireReceiver);
         }
         if(PlayerScore1 == 10){
-            GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER ONE WINS");
+            GUI.Label(new Rect(Screen.width / 2 - 420, 200, 2000, 1000), "PLAYER ONE WINS", winnerStyle);
             theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
         } else if(PlayerScore2 == 10){
-            GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER TWO WINS");
+            GUI.Label(new Rect(Screen.width / 2 - 420, 200, 2000, 1000), "PLAYER TWO WINS", winnerStyle);
             theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
         }
     }
